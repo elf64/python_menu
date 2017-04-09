@@ -1,5 +1,4 @@
 from msvcrt import getch
-from threading import Thread
 import os
 move = 0
 
@@ -9,7 +8,6 @@ def getKey():
 	# 27 - esc
 	# 72 - up Arrow
 	# 80 - down Arrow
-	#while True:
 	key = ord(getch())
 	if key == 27: quit()
 	if key == 72:
@@ -17,15 +15,12 @@ def getKey():
 			move = 0
 			pass
 		else: move -= 1
-		#print move
 		menu(move)
 	if key == 80:
 		if move >= 2:
 			move = 2
 			pass
 		else: move += 1
-			#print move
-		#return move
 		menu(move)
 
 def menu(choice):
@@ -36,11 +31,6 @@ def menu(choice):
 			print '\t-> {}'.format(options[i])
 		else: print '\t   {}'.format(options[i])
 
-t = Thread(target=getKey)
-t2 = Thread(target=menu)
-#getKey()
-#t.start()
-#t2.start()
 while True:
 	getKey()
 	#menu(move)
